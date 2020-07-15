@@ -19,7 +19,6 @@ const config = {
         use: ["babel-loader", "ts-loader"],
         exclude: /node_modules/
       },
-      { test: /\.(js|jsx)$/, loader: "jsx!babel", include: /src/ ,exclude: /node_modules/},
       {
         test: /\.s[ac]ss$/i,
         use: [
