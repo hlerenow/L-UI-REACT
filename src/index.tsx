@@ -1,9 +1,8 @@
+// tslint:disable—
 import * as React from 'react';
 import { render } from 'react-dom';
+import App from './App';
 
-require('./index.scss');
+require('./styles/index.scss');
 
-const App = () => (
-  <div>hello react eslint typescript</div>
-);
 render(<App />, document.getElementById('app'));
