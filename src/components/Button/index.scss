@@ -1,0 +1,19 @@
+@import '../../styles/variables.scss';
+
+.l-button {
+  box-sizing: border-box;
+  padding: $ButtonPaddingY  $ButtonPaddingX;
+  border: $borderSize solid $borderColor;
+  border-radius: $borderRadius;
+  background-color: white;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+  line-height: 1;
+
+  &.primary {
+    border: none;
+    background-color: $primaryColor;
+    color: white;
+  }
+}
