@@ -1,10 +1,36 @@
+// config
+$namespace: 'l';
+$elementSeparator: '__';
+$modifierSeparator: '--';
+$statePrefix: 'is-';
+
 // base
 $primaryColor: #409eff;
 $borderSize: 1px;
-$fontColor: white;
+$fontColor: #606266;
 $borderRadius: 4px;
 $borderColor: #dcdfe6;
 
 // Button
-$ButtonPaddingX: 20px;
-$ButtonPaddingY: 12px;
+$buttonPaddingX: 20px;
+$buttonPaddingY: 12px;
+
+$buttonPrimaryBgColor: $primaryColor;
+$buttonPrimaryBorderColor: $primaryColor;
+$buttonPrimaryColor: white;
+
+$buttonSuccessBgColor: #67c23a;
+$buttonSuccessBorderColor: #67c23a;
+$buttonSuccessColor: white;
+
+$buttonInfoBgColor:#00BCD4 ;
+$buttonInfoBorderColor: #00BCD4;
+$buttonInfoColor: white;
+
+$buttonWarnBgColor:#e6a23c;
+$buttonWarnBorderColor: #e6a23c;
+$buttonWarnColor: white;
+
+$buttonDangerBgColor:#f56c;
+$buttonDangerBorderColor: #f56c;
+$buttonDangerColor: white;

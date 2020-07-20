@@ -10,9 +10,9 @@ export interface BaseButtonProps {
 
 const Button = React.forwardRef((props: BaseButtonProps, ref: any) => {
   let { children, type } = props;
-  type = type || 'primary';
-  children = children || '默认按钮';
-  return <button type="button" className={`l-button ${type}`} ref={ref}>{children}</button>;
+  type = type || 'default';
+  children = children || '';
+  return <button type="button" className={`l-button l-button--${type}`} ref={ref}>{children}</button>;
 });
 
 export default Button;

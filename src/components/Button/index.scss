@@ -1,8 +1,19 @@
-@import '../../styles/variables.scss';
+@import '../../styles/index.scss';
 
-.l-button {
+@mixin button-variant($color, $backgroundColor, $borderColor) {
+  border-color: $borderColor;
+  background-color: $backgroundColor;
+  color: $color;
+  &:hover {
+    background-color: lighten($backgroundColor, 10%);
+    border-color: lighten($borderColor, 10%);
+  }
+}
+
+@include b(button) {
+  color: $fontColor;
   box-sizing: border-box;
-  padding: $ButtonPaddingY  $ButtonPaddingX;
+  padding: $buttonPaddingY  $buttonPaddingY;
   border: $borderSize solid $borderColor;
   border-radius: $borderRadius;
   background-color: white;
@@ -11,9 +22,31 @@
   font-size: 14px;
   line-height: 1;
 
-  &.primary {
-    border: none;
-    background-color: $primaryColor;
-    color: white;
+  @include m(default) {
+
+    &:hover {
+      background-color: lighten($primaryColor, 35%);
+      color: lighten($primaryColor, 10%);
+      border-color: lighten($primaryColor, 25%);
+    }
+
+  }
+
+  @include m(primary) {
+    @include button-variant($buttonPrimaryColor, $buttonPrimaryBgColor ,$buttonPrimaryBorderColor);
+  }
+
+  @include m(success) {
+    @include button-variant($buttonSuccessColor, $buttonSuccessBgColor ,$buttonSuccessBorderColor);
+  }
+
+  @include m(warning) {
+    @include button-variant($buttonWarnColor, $buttonWarnBgColor ,$buttonWarnBorderColor);
+  }
+  @include m(danger) {
+    @include button-variant($buttonDangerColor, $buttonDangerBgColor ,$buttonDangerBorderColor);
+  }
+  @include m(info) {
+    @include button-variant($buttonInfoColor, $buttonInfoBgColor ,$buttonInfoBorderColor);
   }
 }
