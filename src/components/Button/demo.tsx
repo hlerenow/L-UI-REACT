@@ -19,7 +19,7 @@ class ButtonDemo extends React.Component<any, StateType> {
       <div>
         <h2>Button</h2>
         {
-          types.map((type) => (<div style={{ padding: '5px', float: 'left' }}><Button type={type} key={type}>{type}</Button></div>))
+          types.map((type) => (<div style={{ padding: '5px', float: 'left' }} key={type}><Button type={type}>{type}</Button></div>))
         }
       </div>
     );
