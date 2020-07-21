@@ -37,14 +37,22 @@ class ButtonDemo extends React.Component<any, StateType> {
             types.map((type) => (<div className="item" key={type} onClick={onClick} ref={refs}><Button plain type={type}>{type}</Button></div>))
           }
         </div>
+        {/* round */}
         <div className="item-box">
           {
             types.map((type) => (<div className="item" key={type} onClick={onClick} ref={refs}><Button round type={type}>{type}</Button></div>))
           }
         </div>
+        {/* round and plain */}
         <div className="item-box">
           {
             types.map((type) => (<div className="item" key={type} onClick={onClick} ref={refs}><Button round plain type={type}>{type}</Button></div>))
+          }
+        </div>
+        {/* size */}
+        <div className="item-box">
+          {
+            types.map((type, index) => (<div className="item" key={type} onClick={onClick} ref={refs}><Button size={['', 'medium', 'small', 'mini', 'small', 'medium'][index]} type={type}>{type}</Button></div>))
           }
         </div>
       </div>

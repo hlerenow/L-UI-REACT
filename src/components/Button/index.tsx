@@ -12,17 +12,18 @@ export interface BaseButtonProps {
   disabled: boolean,
   round: boolean,
   plain: boolean,
+  size: '' | 'medium' | 'small' | 'mini'
   [key: string]: any;
 }
 
 const Button = React.forwardRef((props: BaseButtonProps, ref: any) => {
   const {
-    children, type, onClick, nativeType, className, round, plain,
+    children, type, onClick, nativeType, className, round, plain, size,
   } = props;
   return (
     <button
       type={nativeType}
-      className={classnames(['l-button', `l-button--${type}`, { 'is-round': round, 'is-plain': plain }, className])}
+      className={classnames(['l-button', `l-button--${type}`, { 'is-round': round, 'is-plain': plain }, size, className])}
       ref={ref}
       onClick={onClick}
     >
@@ -39,6 +40,7 @@ Button.defaultProps = {
   round: false,
   plain: false,
   className: '',
+  size: '',
   onClick() {},
 };
 

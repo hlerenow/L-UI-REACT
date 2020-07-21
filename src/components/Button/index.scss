@@ -4,7 +4,7 @@
   border-color: $borderColor;
   background-color: $backgroundColor;
   color: $color;
-  &:hover {
+  &:hover, &:focus {
     background-color: lighten($backgroundColor, 10%);
     border-color: lighten($borderColor, 10%);
   }
@@ -15,13 +15,30 @@
   }
 }
 
+@mixin button-size {
+  &.medium {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  &.small {
+    font-size: 12px;
+    padding: 9px 15px;
+  }
+
+  &.mini {
+    font-size: 12px;
+    padding: 7px 15px;
+  }
+}
+
 @mixin button-plain($color, $backgroundColor, $borderColor, $lighten) {
   &.is-plain {
     border-color:lighten($borderColor, 20%);
     background-color: lighten($backgroundColor, $lighten);
     color: $backgroundColor;
 
-    &:hover {
+    &:hover, &:focus {
       background-color: $borderColor;
       color: $color;
       border-color: $borderColor;
@@ -43,7 +60,7 @@
 
 
   @include m(default) {
-    &:hover {
+    &:hover, &:focus  {
       background-color: lighten($primaryColor, 35%);
       color: lighten($primaryColor, 10%);
       border-color: lighten($primaryColor, 25%);
@@ -55,35 +72,41 @@
     }
 
     &.is-plain {
-      &:hover {
+      &:hover, &:focus  {
         border-color: $primaryColor;
         color: $primaryColor;
         background-color: $buttonDefaultBgColor;
       }
     }
+    @include button-size;
   }
 
   @include m(primary) {
     @include button-variant($buttonPrimaryColor, $buttonPrimaryBgColor ,$buttonPrimaryBorderColor);
     @include button-plain($buttonPrimaryColor, $buttonPrimaryBgColor ,$buttonPrimaryBorderColor, 45%);
+    @include button-size;
   }
 
   @include m(success) {
     @include button-variant($buttonSuccessColor, $buttonSuccessBgColor ,$buttonSuccessBorderColor);
     @include button-plain($buttonSuccessColor, $buttonSuccessBgColor ,$buttonSuccessBorderColor, 45%);
+    @include button-size;
   }
 
   @include m(warning) {
     @include button-variant($buttonWarnColor, $buttonWarnBgColor ,$buttonWarnBorderColor);
     @include button-plain($buttonWarnColor, $buttonWarnBgColor ,$buttonWarnBorderColor, 40%);
+    @include button-size;
   }
   @include m(danger) {
     @include button-variant($buttonDangerColor, $buttonDangerBgColor ,$buttonDangerBorderColor);
     @include button-plain($buttonDangerColor, $buttonDangerBgColor ,$buttonDangerBorderColor, 30%);
+    @include button-size;
   }
   @include m(info) {
     @include button-variant($buttonInfoColor, $buttonInfoBgColor ,$buttonInfoBorderColor);
     @include button-plain($buttonInfoColor, $buttonInfoBgColor ,$buttonInfoBorderColor, 39%);
+    @include button-size;
   }
 
 }
