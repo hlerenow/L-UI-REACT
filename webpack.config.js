@@ -1,23 +1,25 @@
 const path = require('path');
+const sass = require('sass');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+/** @type {import('webpack').Configuration} */
 const config = {
   entry: {
-    index: './src/index.tsx'
+    index: './src/index.tsx',
   },
   devtool: 'inline-source-map',
-  externals:  process.env.NODE_ENV === 'production' ? {
+  externals: process.env.NODE_ENV === 'production' ? {
     react: 'react',
-    'react-dom': 'eact-dom'
+    'react-dom': 'react-dom',
   } : {},
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: ["babel-loader", "ts-loader"],
-        exclude: /node_modules/
+        use: ['babel-loader', 'ts-loader'],
+        exclude: /node_modules/,
       },
       {
         test: /\.s[ac]ss$/i,
@@ -33,18 +35,18 @@ const config = {
             loader: 'sass-loader',
             options: {
               // Prefer `dart-sass`
-              implementation: require('sass'),
+              implementation: sass,
             },
           },
-        ]
-      }
-    ]
+        ],
+      },
+    ],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Development',
-      template: './public/index.html'
+      template: './public/index.html',
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
@@ -55,13 +57,13 @@ const config = {
     }),
   ],
   resolve: {
-    extensions: ['.tsx', '.ts', '.js','.scss']
+    extensions: ['.tsx', '.ts', '.js', '.scss'],
   },
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    port: 9000
-  }
-}
+    port: 9000,
+  },
+};
 
-module.exports = config
+module.exports = config;
