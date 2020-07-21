@@ -8,45 +8,82 @@
     background-color: lighten($backgroundColor, 10%);
     border-color: lighten($borderColor, 10%);
   }
+
+  &.is-round {
+    border-radius: 20px;
+    padding: $buttonPaddingY  $buttonPaddingX + 2px;
+  }
+}
+
+@mixin button-plain($color, $backgroundColor, $borderColor, $lighten) {
+  &.is-plain {
+    border-color:lighten($borderColor, 20%);
+    background-color: lighten($backgroundColor, $lighten);
+    color: $backgroundColor;
+
+    &:hover {
+      background-color: $borderColor;
+      color: $color;
+      border-color: $borderColor;
+    }
+  }
 }
 
 @include b(button) {
-  color: $fontColor;
+  color: $buttonDefaultColor;
   box-sizing: border-box;
-  padding: $buttonPaddingY  $buttonPaddingY;
-  border: $borderSize solid $borderColor;
+  padding: $buttonPaddingY  $buttonPaddingX;
+  border: $borderSize solid $buttonDefaultBorderColor;
   border-radius: $borderRadius;
-  background-color: white;
+  background-color: $buttonDefaultBgColor;
   cursor: pointer;
   outline: none;
   font-size: 14px;
   line-height: 1;
 
-  @include m(default) {
 
+  @include m(default) {
     &:hover {
       background-color: lighten($primaryColor, 35%);
       color: lighten($primaryColor, 10%);
       border-color: lighten($primaryColor, 25%);
     }
 
+    &.is-round {
+      border-radius: 20px;
+      padding: $buttonPaddingY  $buttonPaddingX + 2px;
+    }
+
+    &.is-plain {
+      &:hover {
+        border-color: $primaryColor;
+        color: $primaryColor;
+        background-color: $buttonDefaultBgColor;
+      }
+    }
   }
 
   @include m(primary) {
     @include button-variant($buttonPrimaryColor, $buttonPrimaryBgColor ,$buttonPrimaryBorderColor);
+    @include button-plain($buttonPrimaryColor, $buttonPrimaryBgColor ,$buttonPrimaryBorderColor, 45%);
   }
 
   @include m(success) {
     @include button-variant($buttonSuccessColor, $buttonSuccessBgColor ,$buttonSuccessBorderColor);
+    @include button-plain($buttonSuccessColor, $buttonSuccessBgColor ,$buttonSuccessBorderColor, 45%);
   }
 
   @include m(warning) {
     @include button-variant($buttonWarnColor, $buttonWarnBgColor ,$buttonWarnBorderColor);
+    @include button-plain($buttonWarnColor, $buttonWarnBgColor ,$buttonWarnBorderColor, 40%);
   }
   @include m(danger) {
     @include button-variant($buttonDangerColor, $buttonDangerBgColor ,$buttonDangerBorderColor);
+    @include button-plain($buttonDangerColor, $buttonDangerBgColor ,$buttonDangerBorderColor, 30%);
   }
   @include m(info) {
     @include button-variant($buttonInfoColor, $buttonInfoBgColor ,$buttonInfoBorderColor);
+    @include button-plain($buttonInfoColor, $buttonInfoBgColor ,$buttonInfoBorderColor, 39%);
   }
+
 }

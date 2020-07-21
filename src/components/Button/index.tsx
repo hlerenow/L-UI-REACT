@@ -1,18 +1,45 @@
 /* eslint-disable no-unused-vars */
 import * as React from 'react';
+import classnames from 'classnames';
 import './index.scss';
 
 export interface BaseButtonProps {
   onClick?: React.MouseEventHandler<HTMLElement>;
-  type?: string;
+  type: 'default' | 'primary' | 'success' | 'info' | 'warning' | 'danger'
+  nativeType: 'button' | 'submit' | 'reset',
+  autofocus: boolean,
+  className: string,
+  disabled: boolean,
+  round: boolean,
+  plain: boolean,
   [key: string]: any;
 }
 
 const Button = React.forwardRef((props: BaseButtonProps, ref: any) => {
-  let { children, type } = props;
-  type = type || 'default';
-  children = children || '';
-  return <button type="button" className={`l-button l-button--${type}`} ref={ref}>{children}</button>;
+  const {
+    children, type, onClick, nativeType, className, round, plain,
+  } = props;
+  return (
+    <button
+      type={nativeType}
+      className={classnames(['l-button', `l-button--${type}`, { 'is-round': round, 'is-plain': plain }, className])}
+      ref={ref}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
 });
+
+Button.defaultProps = {
+  type: 'default',
+  nativeType: 'button',
+  autofocus: false,
+  disabled: false,
+  round: false,
+  plain: false,
+  className: '',
+  onClick() {},
+};
 
 export default Button;

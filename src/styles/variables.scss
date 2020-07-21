@@ -15,6 +15,10 @@ $borderColor: #dcdfe6;
 $buttonPaddingX: 20px;
 $buttonPaddingY: 12px;
 
+$buttonDefaultBgColor: white;
+$buttonDefaultBorderColor: $borderColor;
+$buttonDefaultColor: $fontColor;
+
 $buttonPrimaryBgColor: $primaryColor;
 $buttonPrimaryBorderColor: $primaryColor;
 $buttonPrimaryColor: white;
@@ -23,14 +27,14 @@ $buttonSuccessBgColor: #67c23a;
 $buttonSuccessBorderColor: #67c23a;
 $buttonSuccessColor: white;
 
-$buttonInfoBgColor:#00BCD4 ;
-$buttonInfoBorderColor: #00BCD4;
+$buttonInfoBgColor:#909399 ;
+$buttonInfoBorderColor: #909399;
 $buttonInfoColor: white;
 
 $buttonWarnBgColor:#e6a23c;
 $buttonWarnBorderColor: #e6a23c;
 $buttonWarnColor: white;
 
-$buttonDangerBgColor:#f56c;
-$buttonDangerBorderColor: #f56c;
+$buttonDangerBgColor:#f56c6c;
+$buttonDangerBorderColor: #f56c6c;
 $buttonDangerColor: white;

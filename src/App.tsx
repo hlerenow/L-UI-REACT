@@ -5,7 +5,8 @@ function importAll(r: any) {
   return r.keys().map(r);
 }
 
-let conponents = importAll(require.context('./components', true, /.*demo\.[jt]sx/));
+let conponents = importAll(require.context('./components', true, /.*demo\/index.[jt]sx/));
+console.log('conponents', conponents);
 
 conponents = conponents.map((con:any, index: number) => ({
   Con: con.default,

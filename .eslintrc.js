@@ -27,5 +27,8 @@ module.exports = {
     'import/no-unresolved': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.tsx'] }],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'react/button-has-type': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
   },
 };
