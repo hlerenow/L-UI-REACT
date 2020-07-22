@@ -34,7 +34,10 @@ const config = {
     libraryTarget: 'umd',
   },
   devtool: isDev ? 'inline-source-map' : 'none',
-  externals: {
+  externals: isDev ? {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+  } : {
     react: 'react',
     'react-dom': 'react-dom',
   },
