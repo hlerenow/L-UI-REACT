@@ -1,19 +1,44 @@
+// @ts-nocheck
 const path = require('path');
 const sass = require('sass');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const Env = process.env.NODE_ENV;
+const isDev = Env === 'development';
+
+const plugins = [
+  new MiniCssExtractPlugin({
+    // Options similar to the same options in webpackOptions.output
+    // all options are optional
+    filename: '[name].css',
+    chunkFilename: '[id].css',
+    ignoreOrder: false, // Enable to remove warnings about conflicting order
+  }),
+];
+
+if (isDev) {
+  plugins.push(new HtmlWebpackPlugin({
+    title: 'Development',
+    template: './public/index.html',
+  }));
+  plugins.push(new CleanWebpackPlugin());
+}
 /** @type {import('webpack').Configuration} */
 const config = {
   entry: {
-    index: './src/index.tsx',
+    index: isDev ? './src/dev.tsx' : './src/index.tsx',
   },
-  devtool: 'inline-source-map',
-  externals: process.env.NODE_ENV === 'production' ? {
-    react: 'react',
-    'react-dom': 'react-dom',
-  } : {},
+  output: {
+    path: path.resolve(__dirname, './dist'),
+    library: 'LUI',
+  },
+  devtool: isDev ? 'inline-source-map' : 'none',
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+  },
   module: {
     rules: [
       {
@@ -42,21 +67,11 @@ const config = {
       },
     ],
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      title: 'Development',
-      template: './public/index.html',
-    }),
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // all options are optional
-      filename: '[name].css',
-      chunkFilename: '[id].css',
-      ignoreOrder: false, // Enable to remove warnings about conflicting order
-    }),
-  ],
+  plugins,
   resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './'),
+    },
     extensions: ['.tsx', '.ts', '.js', '.scss'],
   },
   devServer: {

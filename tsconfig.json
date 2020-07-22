@@ -9,10 +9,15 @@
       "allowJs": true,
       "baseUrl": ".",
       "esModuleInterop": true,
-      "declaration": true
+      "declaration": false,
+      "paths": {
+          "@/*": ["*"],
+      }
   },
   "include": [
-      "./src/**/*"
+      "./src/**/*",
+      "./demo/**/*",
+      "./test/**/*"
   ],
   "exclude": [
     "dist",

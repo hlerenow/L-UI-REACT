@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
 import * as React from 'react';
+import { render } from 'react-dom';
 
 function importAll(r: any) {
   return r.keys().map(r);
 }
 
-let conponents = importAll(require.context('./components', true, /.*demo\/index.[jt]sx/));
-console.log('conponents', conponents);
+let conponents = importAll(require.context('../src', true, /.*\/__demo__\/.*index.[jt]sx/));
 
 conponents = conponents.map((con:any, index: number) => ({
   Con: con.default,
@@ -16,21 +16,11 @@ type StateType = {
   name: string
 }
 
-class App extends React.Component<any, StateType> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      name: '列表',
-    };
-  }
-
-  render() {
-    const { name } = this.state;
-    return (
-      <>
-        <div className="title">{name}</div>
-        <div className="conponentsContainer">
-          {
+const App = function App() {
+  return (
+    <>
+      <div className="conponentsContainer">
+        {
             conponents.map((item: any) => {
               const { Con, index } = item;
               return (
@@ -40,10 +30,11 @@ class App extends React.Component<any, StateType> {
               );
             })
           }
-        </div>
-      </>
-    );
-  }
-}
+      </div>
+    </>
+  );
+};
 
-export default App;
+require('./styles/index.scss');
+
+render(<App />, document.getElementById('app'));

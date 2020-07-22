@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test button button type primary 1`] = `"<button type=\\"button\\" class=\\"l-button l-button--primary\\">primary</button>"`;
+
+exports[`Test button render a Button 1`] = `"<button type=\\"button\\" class=\\"l-button l-button--default\\">Default</button>"`;

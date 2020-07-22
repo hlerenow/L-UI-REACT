@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button from '../index';
+import Button from '@/src/components/Button/index';
 import './index.scss';
 
 type StateType = {

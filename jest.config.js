@@ -1,11 +1,12 @@
 /* eslint-disable max-len */
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html
-
 module.exports = {
+  preset: 'ts-jest',
+  setupFilesAfterEnv: ['<rootDir>/tests/setupTests.ts'],
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)?$',
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.[|j]sx?$': 'ts-jest',
   },
   // All imported modules in your tests should be mocked automatically
   // automock: false,
@@ -24,7 +25,14 @@ module.exports = {
 
   // An array of glob patterns indicating a set of files for which coverage information should be
   // collected
-  collectCoverageFrom: ['**/src/**/*?(?<!test).tsx'],
+  collectCoverageFrom: [
+    'src/**/*.{tsx,ts}',
+    '!src/**/__demo__/*.{tsx,ts}',
+    '!src/**/__tests__/*.{tsx,ts}',
+    '!src/App.tsx',
+    '!src/index.tsx',
+    '!src/dev.tsx',
+  ],
 
   // The directory where Jest should output its coverage files
   coverageDirectory: 'coverage',
@@ -85,7 +93,10 @@ module.exports = {
   ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/$1',
+    '\\.(css|scss|less)$': 'identity-obj-proxy',
+  },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
