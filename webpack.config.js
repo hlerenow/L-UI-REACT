@@ -14,7 +14,6 @@ const plugins = [
     // all options are optional
     filename: '[name].css',
     chunkFilename: '[id].css',
-    ignoreOrder: false, // Enable to remove warnings about conflicting order
   }),
 ];
 
@@ -32,12 +31,12 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, './dist'),
-    library: 'LUI',
+    libraryTarget: 'umd',
   },
   devtool: isDev ? 'inline-source-map' : 'none',
   externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
+    react: 'react',
+    'react-dom': 'react-dom',
   },
   module: {
     rules: [
