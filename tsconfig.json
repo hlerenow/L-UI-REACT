@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+      "lib": ["es5", "es6", "es7", "es2017", "dom"],
       "outDir": "./dist/",
       "sourceMap": true,
       "noImplicitAny": true,
@@ -10,9 +11,10 @@
       "baseUrl": ".",
       "esModuleInterop": true,
       "declaration": false,
+      "allowSyntheticDefaultImports": true,
       "paths": {
           "@/*": ["*"],
-      }
+      },
   },
   "include": [
       "./src/**/*",

@@ -1,18 +1,26 @@
 /* eslint-disable no-unused-vars */
-import * as React from 'react';
+import React, { FC } from 'react';
 import classnames from 'classnames';
 import './index.scss';
 
+export type ButtonType = 'primary' | 'default' | 'danger' | 'link';
+
+export type ButtonNativeType = 'button' | 'submit' | 'reset'
+
+export type ButtonSize = '' | 'medium' | 'small' | 'mini'
 export interface BaseButtonProps {
+  /**
+   * 用户名
+   */
   onClick?: React.MouseEventHandler<HTMLElement>;
-  type: 'default' | 'primary' | 'success' | 'info' | 'warning' | 'danger'
-  nativeType: 'button' | 'submit' | 'reset',
-  autofocus: boolean,
-  className: string,
-  disabled: boolean,
-  round: boolean,
-  plain: boolean,
-  size: '' | 'medium' | 'small' | 'mini'
+  type?: ButtonType
+  nativeType?: ButtonNativeType,
+  autofocus?: boolean,
+  className?: string,
+  disabled?: boolean,
+  round?: boolean,
+  size: ButtonSize,
+  plain?: boolean,
   [key: string]: any;
 }
 
