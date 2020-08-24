@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-unused-vars */
 import React, { FC } from 'react';
 import classnames from 'classnames';
@@ -9,24 +10,26 @@ export type ButtonNativeType = 'button' | 'submit' | 'reset'
 
 export type ButtonSize = '' | 'medium' | 'small' | 'mini'
 export interface BaseButtonProps {
+  type?: ButtonType;
+  round?: boolean;
+  size?: ButtonSize;
+  plain?: boolean;
+  disabled?: boolean;
+  className?: string;
+  nativeType?: ButtonNativeType;
   /**
-   * 用户名
+   * Optional click handler
    */
-  onClick?: React.MouseEventHandler<HTMLElement>;
-  type?: ButtonType
-  nativeType?: ButtonNativeType,
-  autofocus?: boolean,
-  className?: string,
-  disabled?: boolean,
-  round?: boolean,
-  size: ButtonSize,
-  plain?: boolean,
+  onClick?: () => void;
+  // onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   [key: string]: any;
 }
 
-const Button = React.forwardRef((props: BaseButtonProps, ref: any) => {
+// eslint-disable-next-line max-len
+export const Button: React.FC<BaseButtonProps> = React.forwardRef((props: BaseButtonProps, ref: any) => {
   const {
-    children, type, onClick, nativeType, className, round, plain, size,
+    children, type, onClick, nativeType, className, round, plain, size, autofocus,
+    ...rest
   } = props;
   return (
     <button
@@ -34,6 +37,7 @@ const Button = React.forwardRef((props: BaseButtonProps, ref: any) => {
       className={classnames(['l-button', `l-button--${type}`, { 'is-round': round, 'is-plain': plain }, size, className])}
       ref={ref}
       onClick={onClick}
+      {...rest}
     >
       {children}
     </button>
@@ -49,7 +53,4 @@ Button.defaultProps = {
   plain: false,
   className: '',
   size: '',
-  onClick() {},
 };
-
-export default Button;
