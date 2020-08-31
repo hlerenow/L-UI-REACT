@@ -9,7 +9,7 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --open --hot",
     "build": "NODE_ENV=production webpack --mode production",
     "lint": "eslint --fix --ext .js --ext .jsx --ext .ts --ext .tsx src/ ",
-    "test": "npm run build && jest -u --coverage && coveralls",
+    "test": "npm run build && jest -u --coverage && coveralls < coverage/lcov.info",
     "test-u": "jest -u",
     "test-c": "jest --coverage",
     "commit": "git-cz",
