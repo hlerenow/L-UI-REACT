@@ -6,7 +6,7 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/tests/setupTests.ts'],
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)?$',
   transform: {
-    '^.+\\.[|j]sx?$': 'ts-jest',
+    '^.+\\.[t|j]sx?$': 'ts-jest',
   },
   // All imported modules in your tests should be mocked automatically
   // automock: false,
@@ -28,12 +28,11 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.{tsx,ts}',
     '!src/**/*.d.{,ts}',
-    '!src/**/__demo__/*.{tsx,ts}',
     '!src/**/__stories__/*.{tsx,ts}',
     '!src/**/__tests__/*.{tsx,ts}',
-    '!src/App.tsx',
     '!src/index.tsx',
-    '!src/dev.tsx',
+    '!src/stories/**/*',
+    '!**/node_modules/**',
   ],
 
   // The directory where Jest should output its coverage files
@@ -45,7 +44,7 @@ module.exports = {
   ],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: 'v8',
+  coverageProvider: 'babel',
 
   // A list of reporter names that Jest uses when writing coverage reports
   coverageReporters: [
@@ -181,8 +180,6 @@ module.exports = {
   // timers: "real",
 
   // A map from regular expressions to paths to transformers
-  // transform: undefined,
-
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
   //   "/node_modules/"

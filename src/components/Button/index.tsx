@@ -54,3 +54,5 @@ Button.defaultProps = {
   className: '',
   size: '',
 };
+
+export default Button;
