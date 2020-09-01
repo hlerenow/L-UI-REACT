@@ -28,9 +28,12 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.{tsx,ts}',
     '!src/**/*.d.{,ts}',
+    '!src/**/__demo__/*.{tsx,ts}',
     '!src/**/__stories__/*.{tsx,ts}',
     '!src/**/__tests__/*.{tsx,ts}',
+    '!src/App.tsx',
     '!src/index.tsx',
+    '!src/dev.tsx',
     '!src/stories/**/*',
     '!**/node_modules/**',
   ],
@@ -180,6 +183,8 @@ module.exports = {
   // timers: "real",
 
   // A map from regular expressions to paths to transformers
+  // transform: undefined,
+
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
   //   "/node_modules/"

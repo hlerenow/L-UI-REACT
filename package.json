@@ -13,7 +13,6 @@
     "test-u": "jest -u",
     "test-c": "jest --coverage",
     "commit": "git-cz",
-    "docs:dev": "bisheng start -c ./site/bisheng.config.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o ./docs"
   },

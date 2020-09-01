@@ -39,8 +39,8 @@ export const Button: React.FC<BaseButtonProps> = React.forwardRef((props: BaseBu
   };
   return (
     <button
-      type={nativeType}
-      className={classnames(['l-button', `l-button--${type}`, { 'is-round': round, 'is-plain': plain, 'is-disabled': disabled }, size, className])}
+      type={nativeType || 'button'}
+      className={classnames(['l-button', `l-button--${type || 'default'}`, { 'is-round': round, 'is-plain': plain, 'is-disabled': disabled }, size, className])}
       ref={ref}
       onClick={innerClick}
       {...rest}
