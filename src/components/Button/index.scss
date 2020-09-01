@@ -78,6 +78,10 @@
         background-color: $buttonDefaultBgColor;
       }
     }
+
+    &.is-disabled {
+      cursor: not-allowed;
+    }
     @include button-size;
   }
 
@@ -93,7 +97,7 @@
     @include button-size;
   }
 
-  @include m(warning) {
+  @include m(warn) {
     @include button-variant($buttonWarnColor, $buttonWarnBgColor ,$buttonWarnBorderColor);
     @include button-plain($buttonWarnColor, $buttonWarnBgColor ,$buttonWarnBorderColor, 40%);
     @include button-size;
@@ -106,6 +110,12 @@
   @include m(info) {
     @include button-variant($buttonInfoColor, $buttonInfoBgColor ,$buttonInfoBorderColor);
     @include button-plain($buttonInfoColor, $buttonInfoBgColor ,$buttonInfoBorderColor, 39%);
+    @include button-size;
+  }
+
+  @include m(text) {
+    border: none;
+    color: $primaryColor;
     @include button-size;
   }
 

@@ -4,11 +4,11 @@ import React, { FC } from 'react';
 import classnames from 'classnames';
 import './index.scss';
 
-export type ButtonType = 'primary' | 'default' | 'danger' | 'link';
+export type ButtonType = 'primary' | 'default' | 'danger' | 'text' | 'warn' | 'info';
 
 export type ButtonNativeType = 'button' | 'submit' | 'reset'
 
-export type ButtonSize = '' | 'medium' | 'small' | 'mini'
+export type ButtonSize = 'medium' | 'small' | 'mini'
 export interface BaseButtonProps {
   type?: ButtonType;
   round?: boolean;
@@ -20,7 +20,7 @@ export interface BaseButtonProps {
   /**
    * Optional click handler
    */
-  onClick?: () => void;
+  onClick?: (e: any) => void;
   // onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   [key: string]: any;
 }
@@ -28,31 +28,26 @@ export interface BaseButtonProps {
 // eslint-disable-next-line max-len
 export const Button: React.FC<BaseButtonProps> = React.forwardRef((props: BaseButtonProps, ref: any) => {
   const {
-    children, type, onClick, nativeType, className, round, plain, size, autofocus,
+    children, type, onClick, nativeType, className, round, plain, size, autofocus, disabled,
     ...rest
   } = props;
+
+  const innerClick = (e: any) => {
+    if (!disabled) {
+      onClick(e);
+    }
+  };
   return (
     <button
       type={nativeType}
-      className={classnames(['l-button', `l-button--${type}`, { 'is-round': round, 'is-plain': plain }, size, className])}
+      className={classnames(['l-button', `l-button--${type}`, { 'is-round': round, 'is-plain': plain, 'is-disabled': disabled }, size, className])}
       ref={ref}
-      onClick={onClick}
+      onClick={innerClick}
       {...rest}
     >
       {children}
     </button>
   );
 });
-
-Button.defaultProps = {
-  type: 'default',
-  nativeType: 'button',
-  autofocus: false,
-  disabled: false,
-  round: false,
-  plain: false,
-  className: '',
-  size: '',
-};
 
 export default Button;
