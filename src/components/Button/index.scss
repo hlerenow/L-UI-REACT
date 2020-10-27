@@ -1,17 +1,29 @@
-@import '../../styles/index.scss';
+@import "../../styles/index.scss";
+
+@mixin disabled($color, $backgroundColor, $borderColor) {
+  &.is-disabled,
+  &.is-disabled:hover,
+  &.is-disabled:focus {
+    cursor: not-allowed;
+    color: lighten($color, 10%);
+    background-color: lighten($backgroundColor, 10%);
+    border-color: lighten($borderColor, 30%);
+  }
+}
 
 @mixin button-variant($color, $backgroundColor, $borderColor) {
   border-color: $borderColor;
   background-color: $backgroundColor;
   color: $color;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: lighten($backgroundColor, 10%);
     border-color: lighten($borderColor, 10%);
   }
 
   &.is-round {
     border-radius: 20px;
-    padding: $buttonPaddingY  $buttonPaddingX + 2px;
+    padding: $buttonPaddingY $buttonPaddingX + 2px;
   }
 }
 
@@ -34,11 +46,12 @@
 
 @mixin button-plain($color, $backgroundColor, $borderColor, $lighten) {
   &.is-plain {
-    border-color:lighten($borderColor, 20%);
+    border-color: lighten($borderColor, 20%);
     background-color: lighten($backgroundColor, $lighten);
     color: $backgroundColor;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: $borderColor;
       color: $color;
       border-color: $borderColor;
@@ -49,7 +62,7 @@
 @include b(button) {
   color: $buttonDefaultColor;
   box-sizing: border-box;
-  padding: $buttonPaddingY  $buttonPaddingX;
+  padding: $buttonPaddingY $buttonPaddingX;
   border: $borderSize solid $buttonDefaultBorderColor;
   border-radius: $borderRadius;
   background-color: $buttonDefaultBgColor;
@@ -58,9 +71,9 @@
   font-size: 14px;
   line-height: 1;
 
-
   @include m(default) {
-    &:hover, &:focus  {
+    &:hover,
+    &:focus {
       background-color: lighten($primaryColor, 35%);
       color: lighten($primaryColor, 10%);
       border-color: lighten($primaryColor, 25%);
@@ -68,55 +81,123 @@
 
     &.is-round {
       border-radius: 20px;
-      padding: $buttonPaddingY  $buttonPaddingX + 2px;
+      padding: $buttonPaddingY $buttonPaddingX + 2px;
     }
 
     &.is-plain {
-      &:hover, &:focus  {
+      &:hover,
+      &:focus {
         border-color: $primaryColor;
         color: $primaryColor;
         background-color: $buttonDefaultBgColor;
       }
     }
-
-    &.is-disabled {
-      cursor: not-allowed;
-    }
     @include button-size;
+    @include disabled($primaryColor, $buttonDefaultBgColor, $primaryColor);
   }
 
   @include m(primary) {
-    @include button-variant($buttonPrimaryColor, $buttonPrimaryBgColor ,$buttonPrimaryBorderColor);
-    @include button-plain($buttonPrimaryColor, $buttonPrimaryBgColor ,$buttonPrimaryBorderColor, 45%);
+    @include button-variant(
+      $buttonPrimaryColor,
+      $buttonPrimaryBgColor,
+      $buttonPrimaryBorderColor
+    );
+    @include button-plain(
+      $buttonPrimaryColor,
+      $buttonPrimaryBgColor,
+      $buttonPrimaryBorderColor,
+      45%
+    );
     @include button-size;
+    @include disabled(
+      $buttonPrimaryColor,
+      $buttonPrimaryBgColor,
+      $buttonPrimaryBorderColor
+    );
   }
 
   @include m(success) {
-    @include button-variant($buttonSuccessColor, $buttonSuccessBgColor ,$buttonSuccessBorderColor);
-    @include button-plain($buttonSuccessColor, $buttonSuccessBgColor ,$buttonSuccessBorderColor, 45%);
+    @include button-variant(
+      $buttonSuccessColor,
+      $buttonSuccessBgColor,
+      $buttonSuccessBorderColor
+    );
+    @include button-plain(
+      $buttonSuccessColor,
+      $buttonSuccessBgColor,
+      $buttonSuccessBorderColor,
+      45%
+    );
     @include button-size;
+    @include disabled(
+      $buttonSuccessColor,
+      $buttonSuccessBgColor,
+      $buttonSuccessBorderColor
+    );
   }
 
   @include m(warn) {
-    @include button-variant($buttonWarnColor, $buttonWarnBgColor ,$buttonWarnBorderColor);
-    @include button-plain($buttonWarnColor, $buttonWarnBgColor ,$buttonWarnBorderColor, 40%);
+    @include button-variant(
+      $buttonWarnColor,
+      $buttonWarnBgColor,
+      $buttonWarnBorderColor
+    );
+    @include button-plain(
+      $buttonWarnColor,
+      $buttonWarnBgColor,
+      $buttonWarnBorderColor,
+      40%
+    );
     @include button-size;
+    @include disabled(
+      $buttonWarnColor,
+      $buttonWarnBgColor,
+      $buttonWarnBorderColor
+    );
   }
   @include m(danger) {
-    @include button-variant($buttonDangerColor, $buttonDangerBgColor ,$buttonDangerBorderColor);
-    @include button-plain($buttonDangerColor, $buttonDangerBgColor ,$buttonDangerBorderColor, 30%);
+    @include button-variant(
+      $buttonDangerColor,
+      $buttonDangerBgColor,
+      $buttonDangerBorderColor
+    );
+    @include button-plain(
+      $buttonDangerColor,
+      $buttonDangerBgColor,
+      $buttonDangerBorderColor,
+      30%
+    );
     @include button-size;
+    @include disabled(
+      $buttonDangerColor,
+      $buttonDangerBgColor,
+      $buttonDangerBorderColor
+    );
   }
   @include m(info) {
-    @include button-variant($buttonInfoColor, $buttonInfoBgColor ,$buttonInfoBorderColor);
-    @include button-plain($buttonInfoColor, $buttonInfoBgColor ,$buttonInfoBorderColor, 39%);
+    @include button-variant(
+      $buttonInfoColor,
+      $buttonInfoBgColor,
+      $buttonInfoBorderColor
+    );
+    @include button-plain(
+      $buttonInfoColor,
+      $buttonInfoBgColor,
+      $buttonInfoBorderColor,
+      39%
+    );
     @include button-size;
+    @include disabled(
+      $buttonInfoColor,
+      $buttonInfoBgColor,
+      $buttonInfoBorderColor
+    );
   }
 
   @include m(text) {
     border: none;
     color: $primaryColor;
     @include button-size;
+    @include disabled(lighten($buttonDefaultColor, 30%), #fff, #fff);
   }
-
 }

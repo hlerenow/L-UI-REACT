@@ -19,7 +19,7 @@ type StateType = {
 const App = function App() {
   return (
     <>
-      <div className="conponentsContainer">
+      <div className="componentsContainer">
         {
             conponents.map((item: any) => {
               const { Con, index } = item;

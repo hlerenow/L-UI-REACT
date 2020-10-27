@@ -31,7 +31,6 @@ export const Button: React.FC<BaseButtonProps> = React.forwardRef((props: BaseBu
     children, type, onClick, nativeType, className, round, plain, size, autofocus, disabled,
     ...rest
   } = props;
-
   const innerClick = (e: any) => {
     if (!disabled) {
       onClick(e);
